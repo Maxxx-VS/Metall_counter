@@ -1,13 +1,25 @@
 import customtkinter as ctk
 
+arr_1 = []
+arr_2 = []
+arr_3 = []
+
+
+
 def button_admission():
-    print("Запись в БД прихода")
+    label = ctk.CTkLabel(app, text="e", fg_color="transparent").pack()
 
-def butto_consuption():
-    print("Запись в БД расхода")
+def combobox_menall(metall):
+    arr_1.append(metall)
+    print(arr_1)
+    
+def combobox_razmer(razmer):
+    arr_2.append(razmer)
+    print(arr_2)
 
-def butto_register():
-    print("Провести Транзакцию")
+def combobox_quantity(quantity):
+    arr_3.append(quantity)
+    print(arr_3)
 
 
 
@@ -15,27 +27,22 @@ app = ctk.CTk()
 
 # характеристики окна программы
 app.title("СИСТЕМА УЧЕТА МЕТАЛЛА В ПЦ")
-app.geometry("1000x800")
+app.geometry("800x500")
 
 # добавление подписей
-title_1 = ctk.CTkLabel(app, text = "ПРИХОД МЕТАЛЛА")
-title_1.grid(row=0, column=0, padx=20, pady=20)
-title_2 = ctk.CTkLabel(app, text = "РАСХОД МЕТАЛЛА")
-title_2.grid(row=2, column=0, padx=20, pady=20)
+title_1 = ctk.CTkLabel(master=app, text = "ПРИХОД МЕТАЛЛА").pack()
 
 # добавление кнопки
-button = ctk.CTkButton(app, text="ПРИХОД МЕТАЛЛА", command = button_admission)
-button.grid(row=1, column=0, padx=20, pady=10)
-button = ctk.CTkButton(app, text="РАСХОД МЕТАЛЛА", command = butto_consuption)
-button.grid(row=3, column=0, padx=20, pady=10)
-button = ctk.CTkButton(app, text="ПРОВЕСТИ ТРАНЗАКЦИЮ", command = butto_consuption)
-button.grid(row=4, column=0, padx=20, pady=10)
+button = ctk.CTkButton(master=app, text="ЗАПИСАТЬ ПРИХОД", command=button_admission).pack()
+
+combobox_metall = ctk.CTkComboBox(app, values=["УГОЛОК", "ЛИСТ", "ШВЕЛЛЕР"], command=combobox_menall).pack()
+combobox_raxmer = ctk.CTkComboBox(app, values=["10", "20", "30"], command=combobox_razmer).pack()
+entry_quantity = ctk.CTkEntry(app, placeholder_text="КОЛИЧЕСТВО, кг").pack()
+e = entry_quantity.get()
+print(e)
 
 
 
-# добавление поля ввода мастера
-entry_1 = ctk.CTkEntry(app, placeholder_text="Фамилия мастер")
-entry_1.grid(row=5, column=0, padx=20, pady=10)
 
 
 
